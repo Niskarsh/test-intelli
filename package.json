@@ -1,0 +1,28 @@
+{
+  "name": "test-intelli",
+  "version": "1.0.0",
+  "description": "Internship test",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "babel-watch app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Niskarsh/test-intelli.git"
+  },
+  "author": "Niskarsh Kumar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Niskarsh/test-intelli/issues"
+  },
+  "homepage": "https://github.com/Niskarsh/test-intelli#readme",
+  "dependencies": {
+    "babel-polyfill": "^6.26.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-watch": "^2.0.7"
+  }
+}
