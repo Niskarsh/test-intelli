@@ -7,11 +7,11 @@ let pagesVisited = []
 let email = []
 // let first  = true
 
-const fId = async link => {
+const fId = async (link) => {
 
     if (_.indexOf(pagesVisited, link) == -1) {
         pagesVisited.push(link)
-        search(link).then(data => {
+        await search(link).then(data => {
             email.push (data)
          }, data => {
             data.map(lnk => {
@@ -23,7 +23,7 @@ const fId = async link => {
     }
 }
 
-export const findId = async link => {
+export const findId = async (link) => {
     await fId (link)
     return email
 }
