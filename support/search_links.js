@@ -1,6 +1,6 @@
 
 
-export const sLinks = ($) => {
+export const sLinks = ($, link) => {
 
     let rLinks = []
     let aLinks = []
@@ -8,15 +8,17 @@ export const sLinks = ($) => {
 
     let relativeLinks = $("a[href^='/']")
     relativeLinks.each(() => {
-        rLinks.push($(this).attr('href'))
+        rLinks.push(`${link}${$(this).attr('href')}`)
 
     })
 
     let absoluteLinks = $("a[href^='http']")
     absoluteLinks.each(() => {
-        aLinks.push($(this).attr('href'))
+        if (`/${link}/`.test ($(this).attr('href'))){
+            aLinks.push($(this).attr('href'))
+        }
     })
-    links.push(`absolute`, aLinks)
-    links.push(`relative`, rLinks)
+    links.push(aLinks)
+    links.push(rLinks)
     return links
 }

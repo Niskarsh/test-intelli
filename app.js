@@ -8,7 +8,7 @@ import { findId } from './support/findId'
     let workbook = new excel.Workbook()
     let Links = workbook.addWorksheet('Links');
     let links = await getLinks ()
-    findId (links[1])
+    console.log (findId (links[1]))
     // links.map ( link => {
     //     search (link)
     // })
