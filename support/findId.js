@@ -1,7 +1,7 @@
-import request from 'request-promise'
-import cheerio from 'cheerio'
+import excel from 'exceljs'
 import _ from 'lodash'
 import { search } from './search'
+import { writeXlsx } from './writeXls'
 
 let pagesVisited = []
 let pagesToVisit = []
@@ -9,14 +9,21 @@ let stack = []
 let stackPointer=0
 let email = []
 let first = true
-let base_url
+let base_url=""
 
-export const findId = async (link) => {
+
+export const findId = async (link, workbook) => {
 
     if (!first) {
-        if (stackPointer == 0) {
+        if (stackPointer == 0||stackPointer<0) {
             // console.log(`--------breaking ${stackPointer}`)
             console.log(email)
+            let sheet = workbook.addWorksheet(base_url.match(/\/\/w?w?w?\.?([a-z0-9]+)\./)[1]);
+            await sheet.addRow ("Home page link", base_url)
+            email.map (async id => {
+                await sheet.addRow (id)
+            })
+            await writeXlsx(workbook, "links").then ( msg => console.log (msg)).catch (e => console.log (e))
             return
             
         
@@ -71,7 +78,7 @@ export const findId = async (link) => {
             stackPointer-=1
             console.log (`-----------Ater pop`, lnk)
 
-            await findId(lnk)
+            await findId(lnk, workbook)
 
                 
             }).catch (e => console.log (e))
@@ -82,7 +89,7 @@ export const findId = async (link) => {
         stackPointer-=1
             console.log (`-----------Ater pop`, lnk)
 
-            await findId(lnk)}
+            await findId(lnk, workbook)}
         
 
     }, async data => {
@@ -106,7 +113,7 @@ export const findId = async (link) => {
             stackPointer-=1
             console.log (`-----------Ater pop`, lnk)
 
-            await findId(lnk)
+            await findId(lnk, workbook)
 
     }).catch(e => console.log(e))
 
