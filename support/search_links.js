@@ -14,7 +14,7 @@ export const sLinks = (html, link) => {
         html.match(relativeLinks).map(lnk => {
             lnk = lnk.match(/"\/?\S+"/)[0].substring(1, lnk.match(/"\/?\S+"/)[0].length - 1);
             let flink = lnk.substring(0, 1) !== "/" ? `/${lnk}` : lnk
-            if (!(/\.pdf$/.test(flink) || /^\./.test(flink))) {
+            if (!(/\.pdf$/.test(flink) ||/\.png$/.test(flink) || /^\./.test(flink))) {
                 if (_.indexOf(links, flink) == -1) {
                     links.push(flink)
                     console.log(`---------`, flink);
@@ -26,6 +26,8 @@ export const sLinks = (html, link) => {
 
         })
     }
+
+    
 
     // html.match(absoluteLinks).map(lnk => {
     //     if(dCheck.test(lnk)){
