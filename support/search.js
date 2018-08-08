@@ -9,6 +9,6 @@ export const search = (link) => new Promise( async (resolve, reject) => {
         let emailRegex = /\S+@\S+\.\S+/g
         let pbody = $('html > body').text()
         console.log (emailRegex.test(pbody))
-        emailRegex.test(pbody) ? resolve(pbody.match (emailRegex)) : reject(await sLinks($, link))
+        emailRegex.test(pbody) ? resolve(pbody.match (emailRegex)) : reject(await sLinks(pbody, link))
     }).catch(e => console.log(e))
 })
