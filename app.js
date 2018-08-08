@@ -8,7 +8,7 @@ import { findId } from './support/findId'
     // let workbook = new excel.Workbook()
     // let Links = workbook.addWorksheet('Links');
     // let links = await getLinks ()
-    console.log (await findId ("http://www.heatmor.com/contact-us.php"))
+    console.log (await findId ("http://www.heatmor.com"))
     // links.map ( link => {
     //     search (link)
     // })
